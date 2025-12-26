@@ -1,0 +1,7 @@
+{
+  "name": "Homes That Heal",
+  "description": "Visualize EMF stressors and harmonize your living space using AI-powered spatial consultation.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
