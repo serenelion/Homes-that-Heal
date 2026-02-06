@@ -1499,17 +1499,77 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive modal */
 @media (max-width: 768px) {
-    .modal-content {
-        padding: 40px 24px;
+    /* Modal container improvements */
+    .modal {
+        padding: 16px;
     }
     
+    .modal-content {
+        padding: 48px 28px;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Larger, easier-to-tap close button */
+    .modal-close {
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 36px;
+        border-radius: 50%;
+        background: var(--sand);
+    }
+    
+    .modal-close:hover {
+        background: var(--stone);
+    }
+    
+    /* Modal header */
+    .modal-header {
+        margin-bottom: 36px;
+    }
+    
+    .modal-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 20px;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.85rem;
+        line-height: 1.2;
+        margin-bottom: 12px;
+    }
+    
+    .modal-header p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    /* Form improvements */
     .modal .form-row {
         grid-template-columns: 1fr;
         gap: 0;
     }
     
-    .modal-header h2 {
-        font-size: 1.75rem;
+    .modal .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .modal .form-group label {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
+    
+    .modal .form-group input,
+    .modal .form-group select {
+        padding: 16px;
+        font-size: 16px; /* Prevents iOS zoom */
+        border-radius: 10px;
     }
     
     /* Multi-step responsive */
@@ -1522,36 +1582,153 @@ h1, h2, h3, h4, h5, h6 {
         display: none;
     }
     
+    .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
     .step-divider {
         width: 40px;
         margin: 0 12px;
     }
     
+    /* Form actions */
     .form-actions {
         flex-direction: column;
+        gap: 12px;
     }
     
     .form-actions .btn-back,
     .form-actions .btn-submit {
         flex: none;
         width: 100%;
+        min-height: 52px;
+        font-size: 1rem;
+    }
+    
+    .modal .btn-submit,
+    .modal .btn-next {
+        min-height: 52px;
+        font-size: 1rem;
+        padding: 16px;
+    }
+    
+    /* Success message in modal */
+    .modal .success-message {
+        padding: 48px 24px;
+    }
+    
+    .modal .success-message .success-icon {
+        font-size: 4rem;
+    }
+    
+    .modal .success-message h3 {
+        font-size: 1.75rem;
+    }
+    
+    .modal .success-message p {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
+    /* Extra compact modal for small phones */
+    .modal {
+        padding: 12px;
+    }
+    
     .modal-content {
-        padding: 32px 20px;
-        max-height: 95vh;
+        padding: 40px 24px;
+        max-height: 92vh;
+        border-radius: 16px;
+    }
+    
+    /* Close button */
+    .modal-close {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        font-size: 32px;
+    }
+    
+    /* Header */
+    .modal-header {
+        margin-bottom: 32px;
+    }
+    
+    .modal-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
     }
     
     .modal-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     
+    .modal-header p {
+        font-size: 0.95rem;
+    }
+    
+    /* Form fields */
+    .modal .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .modal .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .modal .form-group input,
+    .modal .form-group select {
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    /* Step indicators */
     .step-number {
         width: 32px;
         height: 32px;
         font-size: 0.9rem;
+    }
+    
+    .step-divider {
+        width: 32px;
+        margin: 0 10px;
+    }
+    
+    .form-steps {
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+    }
+    
+    /* Buttons */
+    .modal .btn-submit,
+    .modal .btn-next,
+    .form-actions .btn-back,
+    .form-actions .btn-submit {
+        min-height: 50px;
+        font-size: 0.95rem;
+        padding: 14px;
+    }
+    
+    /* Success message */
+    .modal .success-message {
+        padding: 40px 20px;
+    }
+    
+    .modal .success-message .success-icon {
+        font-size: 3.5rem;
+    }
+    
+    .modal .success-message h3 {
+        font-size: 1.5rem;
+    }
+    
+    .modal .success-message p {
+        font-size: 0.95rem;
     }
 }
 
@@ -1907,20 +2084,22 @@ h1, h2, h3, h4, h5, h6 {
     
     /* Navigation mobile */
     .nav {
-        padding: 16px 0;
-    }
-    
-    .nav-content {
         padding: 12px 0;
     }
     
+    .nav-content {
+        padding: 10px 0;
+    }
+    
     .nav-links {
-        gap: 20px;
+        gap: 16px;
     }
     
     .btn-nav {
-        padding: 10px 18px;
+        padding: 10px 16px;
         font-size: 0.9rem;
+        white-space: nowrap;
+        border-radius: 8px;
     }
     
     /* Typography refinements */
@@ -2103,6 +2282,25 @@ h1, h2, h3, h4, h5, h6 {
     
     .container {
         padding: 0 16px;
+    }
+    
+    /* Navigation extra small */
+    .nav {
+        padding: 10px 0;
+    }
+    
+    .nav-content {
+        padding: 8px 0;
+    }
+    
+    .nav-links {
+        gap: 12px;
+    }
+    
+    .btn-nav {
+        padding: 9px 14px;
+        font-size: 0.85rem;
+        font-weight: 600;
     }
     
     /* Hero extra small */
