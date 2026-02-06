@@ -1890,3 +1890,373 @@ h1, h2, h3, h4, h5, h6 {
         margin-top: 40px;
     }
 }
+
+/* ===========================================
+   Mobile Optimization (Enhanced)
+   =========================================== */
+
+@media (max-width: 768px) {
+    /* Global mobile adjustments */
+    :root {
+        --section-padding: 80px;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* Navigation mobile */
+    .nav {
+        padding: 16px 0;
+    }
+    
+    .nav-content {
+        padding: 12px 0;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .btn-nav {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+    
+    /* Typography refinements */
+    .section-title {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+        margin-bottom: 16px;
+    }
+    
+    .section-subtitle {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+    
+    /* Hero improvements */
+    .hero {
+        padding: 100px 0 60px;
+    }
+    
+    .hero-badge {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        margin-bottom: 24px;
+    }
+    
+    .hero-leaf {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 10vw, 3rem);
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 28px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        padding: 16px 32px;
+        font-size: 1rem;
+    }
+    
+    /* Stats grid mobile */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .stat-item {
+        padding: 32px 24px;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+    
+    .stat-label {
+        font-size: 1.1rem;
+    }
+    
+    /* About section mobile */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .about-text h3 {
+        font-size: 1.6rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .about-text blockquote {
+        font-size: 1.15rem;
+        padding: 24px;
+        margin: 32px 0;
+    }
+    
+    /* Journey steps mobile */
+    .journey-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .journey-card {
+        padding: 32px 24px;
+    }
+    
+    .journey-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+    }
+    
+    .journey-card p {
+        font-size: 1rem;
+    }
+    
+    /* Principles grid mobile */
+    .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .principle-item {
+        padding: 32px 24px;
+    }
+    
+    .principle-item h3 {
+        font-size: 1.4rem;
+    }
+    
+    /* FAQ grid mobile */
+    .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .faq-item {
+        padding: 24px 20px;
+    }
+    
+    .faq-item h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+    
+    .faq-item p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    /* Better touch targets for buttons */
+    .btn-submit,
+    .btn-next,
+    .btn-back {
+        min-height: 50px;
+        font-size: 1rem;
+        padding: 16px 24px;
+    }
+    
+    /* Form improvements */
+    .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 14px 16px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screens */
+    :root {
+        --section-padding: 60px;
+    }
+    
+    .container {
+        padding: 0 16px;
+    }
+    
+    /* Hero extra small */
+    .hero {
+        padding: 80px 0 50px;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.75rem, 9vw, 2.5rem);
+        margin-bottom: 16px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    
+    .hero-cta {
+        margin-top: 24px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 14px 28px;
+        font-size: 0.95rem;
+    }
+    
+    /* Section titles smaller */
+    .section-title {
+        font-size: clamp(1.75rem, 7vw, 2.25rem);
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Stats smaller spacing */
+    .stats {
+        padding: 50px 0;
+    }
+    
+    .stats-grid {
+        gap: 24px;
+    }
+    
+    .stat-item {
+        padding: 24px 20px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+    }
+    
+    /* Journey cards tighter */
+    .journey-grid {
+        gap: 24px;
+    }
+    
+    .journey-card {
+        padding: 24px 20px;
+    }
+    
+    .journey-card h3 {
+        font-size: 1.35rem;
+    }
+    
+    .journey-card p {
+        font-size: 0.95rem;
+    }
+    
+    .journey-number {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+    }
+    
+    /* Principles tighter */
+    .principles-grid {
+        gap: 20px;
+    }
+    
+    .principle-item {
+        padding: 24px 20px;
+    }
+    
+    .principle-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .principle-item h3 {
+        font-size: 1.25rem;
+    }
+    
+    .principle-item p {
+        font-size: 0.95rem;
+    }
+    
+    /* FAQ tighter */
+    .faq-grid {
+        gap: 20px;
+    }
+    
+    .faq-item {
+        padding: 20px 16px;
+    }
+    
+    .faq-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    
+    .faq-item p {
+        font-size: 0.9rem;
+    }
+    
+    /* Footer form smaller */
+    .footer-cta-title {
+        font-size: 1.75rem;
+    }
+    
+    .footer-cta-text {
+        font-size: 1rem;
+    }
+    
+    .footer-form-wrapper {
+        padding: 24px 16px;
+    }
+    
+    /* Success messages smaller */
+    .success-icon {
+        font-size: 3.5rem !important;
+    }
+    
+    .success-message h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .success-message p {
+        font-size: 0.95rem !important;
+    }
+    
+    /* About blockquote */
+    .about-text blockquote {
+        font-size: 1.05rem;
+        padding: 20px;
+        margin: 24px 0;
+    }
+}
