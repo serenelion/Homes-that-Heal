@@ -169,11 +169,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-nav {
+    display: inline-block;
     padding: 10px 20px;
     background: var(--terra-green);
     color: var(--white);
     border-radius: 6px;
     font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: var(--transition-smooth);
 }
 
 .btn-nav:hover {
@@ -1007,8 +1012,10 @@ h1, h2, h3, h4, h5, h6 {
         --section-padding: 60px;
     }
     
+    /* Navigation button stays visible on mobile */
     .nav-links {
-        display: none;
+        display: flex;
+        gap: 20px;
     }
     
     .hero {
