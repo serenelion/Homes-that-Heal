@@ -31,6 +31,32 @@ function closeModal() {
         successMessage.classList.add('hidden');
         form.reset();
     }
+    
+    // Reset multi-step form to step 1
+    resetFormToStep1(form);
+}
+
+// Helper function to reset multi-step form
+function resetFormToStep1(form) {
+    const steps = form.querySelectorAll('.form-step');
+    const indicators = form.querySelectorAll('.step-indicator');
+    
+    steps.forEach((step, index) => {
+        if (index === 0) {
+            step.classList.add('active');
+        } else {
+            step.classList.remove('active');
+        }
+    });
+    
+    indicators.forEach((indicator, index) => {
+        if (index === 0) {
+            indicator.classList.add('active');
+        } else {
+            indicator.classList.remove('active');
+        }
+        indicator.classList.remove('completed');
+    });
 }
 
 // Attach event listeners
@@ -78,10 +104,108 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// ===================================================
+// Multi-step Form Handler (Reusable Component)
+// ===================================================
+
+function initMultiStepForm(formElement) {
+    let currentStep = 1;
+    const totalSteps = 2;
+    
+    const steps = formElement.querySelectorAll('.form-step');
+    const stepIndicators = formElement.querySelectorAll('.step-indicator');
+    const nextBtn = formElement.querySelector('.btn-next');
+    const backBtn = formElement.querySelector('.btn-back');
+    
+    function showStep(stepNumber) {
+        // Hide all steps
+        steps.forEach(step => {
+            step.classList.remove('active');
+        });
+        
+        // Show current step
+        const currentStepEl = formElement.querySelector(`.form-step[data-step="${stepNumber}"]`);
+        if (currentStepEl) {
+            currentStepEl.classList.add('active');
+        }
+        
+        // Update indicators
+        stepIndicators.forEach((indicator, index) => {
+            if (index < stepNumber) {
+                indicator.classList.add('active');
+                indicator.classList.add('completed');
+            } else if (index + 1 === stepNumber) {
+                indicator.classList.add('active');
+                indicator.classList.remove('completed');
+            } else {
+                indicator.classList.remove('active');
+                indicator.classList.remove('completed');
+            }
+        });
+        
+        currentStep = stepNumber;
+    }
+    
+    function validateStep(stepNumber) {
+        const stepEl = formElement.querySelector(`.form-step[data-step="${stepNumber}"]`);
+        const inputs = stepEl.querySelectorAll('input[required], select[required]');
+        
+        for (let input of inputs) {
+            if (!input.value.trim()) {
+                input.focus();
+                return false;
+            }
+            
+            // Email validation
+            if (input.type === 'email' && !input.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                alert('Please enter a valid email address.');
+                input.focus();
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    // Next button
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    showStep(currentStep + 1);
+                }
+            }
+        });
+    }
+    
+    // Back button
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+            }
+        });
+    }
+    
+    // Initialize
+    showStep(1);
+}
+
 // Reusable waitlist form handler
 async function handleWaitlistSubmit(form, successMessageId, sourceLocation) {
-    const submitBtn = form.querySelector('.btn-submit');
+    const submitBtn = form.querySelector('button[type="submit"]');
     const successMessage = document.getElementById(successMessageId);
+    
+    // Validate step 2 before submission
+    const step2 = form.querySelector('.form-step[data-step="2"]');
+    const inputs = step2.querySelectorAll('input[required], select[required]');
+    for (let input of inputs) {
+        if (!input.value.trim()) {
+            alert('Please fill in all required fields.');
+            input.focus();
+            return;
+        }
+    }
     
     // Get form data
     const formData = {
@@ -92,7 +216,6 @@ async function handleWaitlistSubmit(form, successMessageId, sourceLocation) {
         projectType: form.projectType.value,
         budget: form.budget.value,
         timeline: form.timeline.value,
-        updates: form.updates.checked,
         timestamp: new Date().toISOString(),
         source: sourceLocation
     };
@@ -151,17 +274,25 @@ async function handleWaitlistSubmit(form, successMessageId, sourceLocation) {
     }
 }
 
-// Modal waitlist form
-document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    await handleWaitlistSubmit(this, 'successMessage', 'modal');
-});
+// Initialize multi-step forms
+const modalForm = document.getElementById('waitlistForm');
+const footerForm = document.getElementById('footerWaitlistForm');
 
-// Footer waitlist form
-document.getElementById('footerWaitlistForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    await handleWaitlistSubmit(this, 'footerSuccessMessage', 'footer');
-});
+if (modalForm) {
+    initMultiStepForm(modalForm);
+    modalForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        await handleWaitlistSubmit(this, 'successMessage', 'modal');
+    });
+}
+
+if (footerForm) {
+    initMultiStepForm(footerForm);
+    footerForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        await handleWaitlistSubmit(this, 'footerSuccessMessage', 'footer');
+    });
+}
 
 // Intersection Observer for fade-in animations
 const observerOptions = {

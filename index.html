@@ -422,54 +422,75 @@
 
             <!-- Waitlist Form -->
             <div class="footer-form-wrapper">
-                <form id="footerWaitlistForm" class="waitlist-form footer-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="footerFirstName">First Name *</label>
-                            <input type="text" id="footerFirstName" name="firstName" required placeholder="First name">
+                <form id="footerWaitlistForm" class="waitlist-form footer-form multistep-form">
+                    <!-- Step indicator -->
+                    <div class="form-steps">
+                        <div class="step-indicator active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-label">Contact</span>
                         </div>
-
-                        <div class="form-group">
-                            <label for="footerLastName">Last Name *</label>
-                            <input type="text" id="footerLastName" name="lastName" required placeholder="Last name">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="footerEmail">Email Address *</label>
-                            <input type="email" id="footerEmail" name="email" required placeholder="your@email.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="footerPhone">Phone Number *</label>
-                            <input type="tel" id="footerPhone" name="phone" required placeholder="(555) 123-4567">
+                        <div class="step-divider"></div>
+                        <div class="step-indicator" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-label">Project</span>
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="footerProjectType">Project Type *</label>
-                            <select id="footerProjectType" name="projectType" required>
-                                <option value="">Select your project type...</option>
-                                <option value="home-renovation">Home Renovation</option>
-                                <option value="new-home-build">New Home Build</option>
-                                <option value="ecovillage">Ecovillage</option>
-                            </select>
+                    <!-- Step 1: Contact Information -->
+                    <div class="form-step active" data-step="1">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="footerFirstName">First Name *</label>
+                                <input type="text" id="footerFirstName" name="firstName" required placeholder="First name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="footerLastName">Last Name *</label>
+                                <input type="text" id="footerLastName" name="lastName" required placeholder="Last name">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="footerBudget">Budget Range *</label>
-                            <select id="footerBudget" name="budget" required>
-                                <option value="">Select your budget range...</option>
-                                <option value="5k-50k">$5,000 - $50,000</option>
-                                <option value="50k-150k">$50,000 - $150,000</option>
-                                <option value="150k-500k">$150,000 - $500,000</option>
-                                <option value="500k-2m">$500,000 - $2M</option>
-                                <option value="2m-10m">$2M - $10M</option>
-                                <option value="10m-50m">$10M - $50M</option>
-                                <option value="50m+">$50M+</option>
-                            </select>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="footerEmail">Email Address *</label>
+                                <input type="email" id="footerEmail" name="email" required placeholder="your@email.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="footerPhone">Phone Number *</label>
+                                <input type="tel" id="footerPhone" name="phone" required placeholder="(555) 123-4567">
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-submit btn-next">Continue →</button>
+                    </div>
+
+                    <!-- Step 2: Project Details -->
+                    <div class="form-step" data-step="2">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="footerProjectType">Project Type *</label>
+                                <select id="footerProjectType" name="projectType" required>
+                                    <option value="">Select your project type...</option>
+                                    <option value="home-renovation">Home Renovation</option>
+                                    <option value="new-home-build">New Home Build</option>
+                                    <option value="ecovillage">Ecovillage</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="footerBudget">Budget Range *</label>
+                                <select id="footerBudget" name="budget" required>
+                                    <option value="">Select your budget range...</option>
+                                    <option value="5k-50k">$5,000 - $50,000</option>
+                                    <option value="50k-150k">$50,000 - $150,000</option>
+                                    <option value="150k-500k">$150,000 - $500,000</option>
+                                    <option value="500k-2m">$500,000 - $2M</option>
+                                    <option value="2m-10m">$2M - $10M</option>
+                                    <option value="10m-50m">$10M - $50M</option>
+                                    <option value="50m+">$50M+</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -483,22 +504,16 @@
                                 <option value="exploring">Exploring (24+ months)</option>
                             </select>
                         </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary btn-back">← Back</button>
+                            <button type="submit" class="btn-submit">Start Your Transformation</button>
+                        </div>
+
+                        <p class="form-privacy">
+                            <small>We respect your privacy. Unsubscribe anytime.</small>
+                        </p>
                     </div>
-
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="updates" id="footerUpdates">
-                            <span>Send me updates, early access opportunities, and design insights</span>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn-submit">
-                        Start Your Transformation
-                    </button>
-
-                    <p class="form-privacy">
-                        <small>We respect your privacy. Unsubscribe anytime.</small>
-                    </p>
                 </form>
 
                 <div id="footerSuccessMessage" class="success-message hidden">
@@ -530,83 +545,99 @@
 
             <div class="modal-header">
                 <img src="assets/Picto_Leaf_Green.svg" alt="Leaf" class="modal-icon">
-                <h2>Start Your Transformation</h2>
-                <p>Join the waitlist for priority access to Discovery Kits and early-bird pricing.</p>
+                <h2>Join the Future of Wellness</h2>
+                <p>Priority access to Discovery Kits, early-bird pricing, and exclusive design insights from our master craftsmen.</p>
             </div>
 
-            <form id="waitlistForm" class="waitlist-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" name="firstName" required placeholder="First name">
+            <!-- Multi-step form -->
+            <form id="waitlistForm" class="waitlist-form multistep-form">
+                <!-- Step indicator -->
+                <div class="form-steps">
+                    <div class="step-indicator active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Contact</span>
+                    </div>
+                    <div class="step-divider"></div>
+                    <div class="step-indicator" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Project</span>
+                    </div>
+                </div>
+
+                <!-- Step 1: Contact Information -->
+                <div class="form-step active" data-step="1">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="First name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required placeholder="Last name">
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="lastName">Last Name *</label>
-                        <input type="text" id="lastName" name="lastName" required placeholder="Last name">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
                     </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                    </div>
+
+                    <button type="button" class="btn-submit btn-next">Continue →</button>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                <!-- Step 2: Project Details -->
+                <div class="form-step" data-step="2">
+                    <div class="form-group">
+                        <label for="projectType">Project Type *</label>
+                        <select id="projectType" name="projectType" required>
+                            <option value="">Select your project type...</option>
+                            <option value="home-renovation">Home Renovation</option>
+                            <option value="new-home-build">New Home Build</option>
+                            <option value="ecovillage">Ecovillage</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Budget Range *</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select your budget range...</option>
+                            <option value="5k-50k">$5,000 - $50,000</option>
+                            <option value="50k-150k">$50,000 - $150,000</option>
+                            <option value="150k-500k">$150,000 - $500,000</option>
+                            <option value="500k-2m">$500,000 - $2M</option>
+                            <option value="2m-10m">$2M - $10M</option>
+                            <option value="10m-50m">$10M - $50M</option>
+                            <option value="50m+">$50M+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeline">Project Timeline *</label>
+                        <select id="timeline" name="timeline" required>
+                            <option value="">When are you looking to start?</option>
+                            <option value="immediate">Immediate (0-3 months)</option>
+                            <option value="near-term">Near-term (3-6 months)</option>
+                            <option value="mid-term">Mid-term (6-12 months)</option>
+                            <option value="long-term">Long-term (12-24 months)</option>
+                            <option value="exploring">Exploring (24+ months)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary btn-back">← Back</button>
+                        <button type="submit" class="btn-submit">Join Waitlist</button>
+                    </div>
+
+                    <p class="form-privacy">
+                        <small>We respect your privacy. Unsubscribe anytime.</small>
+                    </p>
                 </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
-                </div>
-
-                <div class="form-group">
-                    <label for="projectType">Project Type *</label>
-                    <select id="projectType" name="projectType" required>
-                        <option value="">Select your project type...</option>
-                        <option value="home-renovation">Home Renovation</option>
-                        <option value="new-home-build">New Home Build</option>
-                        <option value="ecovillage">Ecovillage</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="budget">Budget Range *</label>
-                    <select id="budget" name="budget" required>
-                        <option value="">Select your budget range...</option>
-                        <option value="5k-50k">$5,000 - $50,000</option>
-                        <option value="50k-150k">$50,000 - $150,000</option>
-                        <option value="150k-500k">$150,000 - $500,000</option>
-                        <option value="500k-2m">$500,000 - $2M</option>
-                        <option value="2m-10m">$2M - $10M</option>
-                        <option value="10m-50m">$10M - $50M</option>
-                        <option value="50m+">$50M+</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="timeline">Project Timeline *</label>
-                    <select id="timeline" name="timeline" required>
-                        <option value="">When are you looking to start?</option>
-                        <option value="immediate">Immediate (0-3 months)</option>
-                        <option value="near-term">Near-term (3-6 months)</option>
-                        <option value="mid-term">Mid-term (6-12 months)</option>
-                        <option value="long-term">Long-term (12-24 months)</option>
-                        <option value="exploring">Exploring (24+ months)</option>
-                    </select>
-                </div>
-
-                <div class="form-group checkbox-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="updates" id="updates">
-                        <span>Send me updates, early access opportunities, and design insights</span>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn-submit">
-                    Join Waitlist
-                </button>
-
-                <p class="form-privacy">
-                    <small>We respect your privacy. Unsubscribe anytime.</small>
-                </p>
             </form>
 
             <div id="successMessage" class="success-message hidden">
