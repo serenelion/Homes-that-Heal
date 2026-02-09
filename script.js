@@ -233,16 +233,23 @@ async function handleWaitlistSubmit(form, successMessageId, sourceLocation) {
     submitBtn.style.opacity = '0.6';
     
     try {
-        // Store in localStorage for demo/backup
+        // Submit to Netlify Forms
+        const netlifyFormData = new URLSearchParams(new FormData(form)).toString();
+        const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: netlifyFormData,
+        });
+
+        if (!response.ok) {
+            throw new Error('Form submission failed');
+        }
+
+        // Store in localStorage as backup
         const existingData = JSON.parse(localStorage.getItem('homesHealWaitlist') || '[]');
         existingData.push(formData);
         localStorage.setItem('homesHealWaitlist', JSON.stringify(existingData));
-        
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1200));
-        
-        // Optional: Send to your backend/CRM (examples below)
-        
+
         // Show success message
         form.style.display = 'none';
         successMessage.classList.remove('hidden');

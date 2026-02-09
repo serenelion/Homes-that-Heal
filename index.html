@@ -422,7 +422,9 @@
 
             <!-- Waitlist Form -->
             <div class="footer-form-wrapper">
-                <form id="footerWaitlistForm" class="waitlist-form footer-form multistep-form">
+                <form id="footerWaitlistForm" name="waitlist-footer" class="waitlist-form footer-form multistep-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="waitlist-footer" />
+                    <p style="display:none"><label>Don't fill this: <input name="bot-field" /></label></p>
                     <!-- Step indicator -->
                     <div class="form-steps">
                         <div class="step-indicator active" data-step="1">
@@ -541,7 +543,9 @@
             </div>
 
             <!-- Multi-step form -->
-            <form id="waitlistForm" class="waitlist-form multistep-form">
+            <form id="waitlistForm" name="waitlist-modal" class="waitlist-form multistep-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="waitlist-modal" />
+                <p style="display:none"><label>Don't fill this: <input name="bot-field" /></label></p>
                 <!-- Step indicator -->
                 <div class="form-steps">
                     <div class="step-indicator active" data-step="1">
